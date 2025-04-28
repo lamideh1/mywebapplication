@@ -23,3 +23,41 @@ pipeline {
         }
     }
 }
+stage('Build Docker Image') {
+    steps {
+        script {
+            sh 'docker build -t mywebapp .'
+        }
+    }
+}
+stage('Run Docker Container') {
+    steps {
+        script {
+            sh 'docker run -d -p 8080:8080 mywebapp'
+        }
+    }
+}
+stage('Push to Docker Hub') {
+    steps {
+        script {
+            sh 'docker login -u <username> -p <password>'
+            sh 'docker push <username>/mywebapp'
+        }
+    }
+}
+stage('Push to Docker Hub') {
+    steps {
+        script {
+            sh 'docker login -u <username> -p <password>'
+            sh 'docker push <username>/mywebapp'
+        }
+    }
+}
+stage('Push to Docker Hub') {
+    steps {
+        script {
+            sh 'docker login -u lammy582 -p MAKINGit10-/:'
+            sh 'docker push lammy582/mywebapp'
+        }
+    }
+}
